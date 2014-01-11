@@ -57,5 +57,23 @@ public:
 			}
 		}
 	}
+
+	static void ShellSort(T *begin, T *end)
+	{
+		int size = end - begin + 1;
+		int h = 1;
+
+		while (h < size/3) {
+			h = h * 3 + 1; 	// 1, 4, 13, 40, 121, 364, 1093...
+		}
+		while (h >= 1) {
+			for (T *i = begin+h; i != end; ++i) {
+				for (T *j = i; j >= begin+h && *j < *(j-h); j-=h) {
+					exch(j, j-h);
+				}
+			}
+		}
+		h /= 3;
+	}
 };
 

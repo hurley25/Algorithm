@@ -15,33 +15,48 @@
 // =====================================================================================
 
 #include <iostream>
+#include <ctime>
 #include <gtest/gtest.h>
 
 #include "Sort.hpp"
 
-#define TEST_COUNTS 100000
+#define TEST_COUNTS 10000
 
 TEST(TEST_SELECT_SORT, ONLY_TEST)
 {
-	int array[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
-	
+	int *array = new int[TEST_COUNTS];
+	srand(time(NULL));
 	for (int i = 0; i < TEST_COUNTS; ++i) {
-		Sort<int>::SelectSort(array, array+(sizeof(array)/sizeof(int)));
+		array[i] = rand() % 10000;
 	}
-
-	EXPECT_TRUE(Sort<int>::isSorted(array, array+(sizeof(array)/sizeof(int))));
+	Sort<int>::SelectSort(array, array+TEST_COUNTS);
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+	delete []array;
 }
 
 TEST(TEST_INSERT_SORT, ONLY_TEST)
 {
-	int array[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
-
+	int *array = new int[TEST_COUNTS];
+	srand(time(NULL));
 	for (int i = 0; i < TEST_COUNTS; ++i) {
-		Sort<int>::InsertSort(array, array+(sizeof(array)/sizeof(int)));
+		array[i] = rand() % 10000;
 	}
-
-	EXPECT_TRUE(Sort<int>::isSorted(array, array+(sizeof(array)/sizeof(int))));
+	Sort<int>::InsertSort(array, array+TEST_COUNTS);
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+	delete []array;
 }
+
+//TEST(TEST_SHELL_SORT, ONLY_TEST)
+//{
+//	int *array = new int[TEST_COUNTS];
+//	srand(time(NULL));
+//	for (int i = 0; i < TEST_COUNTS; ++i) {
+//		array[i] = rand() % 10000;
+//	}
+//	Sort<int>::ShellSort(array, array+TEST_COUNTS);
+//	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+//	delete []array;
+//}
 
 int main(int argc, char *argv[])
 {

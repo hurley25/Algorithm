@@ -19,16 +19,28 @@
 
 #include "Sort.hpp"
 
-TEST(TEST_BOOL, ONLY_TEST)
+#define TEST_COUNTS 100000
+
+TEST(TEST_SELECT_SORT, ONLY_TEST)
 {
-	int array_1[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
-	int array_2[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
+	int array[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
+	
+	for (int i = 0; i < TEST_COUNTS; ++i) {
+		Sort<int>::SelectSort(array, array+(sizeof(array)/sizeof(int)));
+	}
 
-	Sort<int>::SelectSort(array_1, array_1+(sizeof(array_1)/sizeof(int)));
-	Sort<int>::InsertSort(array_2, array_2+(sizeof(array_2)/sizeof(int)));
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+(sizeof(array)/sizeof(int))));
+}
 
-	EXPECT_TRUE(Sort<int>::isSorted(array_1, array_1+(sizeof(array_1)/sizeof(int))));
-	EXPECT_TRUE(Sort<int>::isSorted(array_2, array_2+(sizeof(array_2)/sizeof(int))));
+TEST(TEST_INSERT_SORT, ONLY_TEST)
+{
+	int array[] = {5, 6, 2, 1, 0, 7, 9, 3, 4, 8};
+
+	for (int i = 0; i < TEST_COUNTS; ++i) {
+		Sort<int>::InsertSort(array, array+(sizeof(array)/sizeof(int)));
+	}
+
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+(sizeof(array)/sizeof(int))));
 }
 
 int main(int argc, char *argv[])

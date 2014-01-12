@@ -72,6 +72,14 @@ public:
 			for (T *j = i; j > begin && *j < *(j-1); --j) {
 				exch(j, j-1);
 			}
+			// 等价以下写法
+			// for (T *j = i; j > begin; --j) {
+			// 	if (*j < *(j-1)) {
+			// 		exch(j, j-1);
+			// 	} else {
+			// 		break;
+			// 	}
+			// }
 		}
 	}
 

@@ -60,7 +60,7 @@ public:
 
 	static void ShellSort(T *begin, T *end)
 	{
-		int size = end - begin + 1;
+		int size = end - begin;
 		int h = 1;
 
 		while (h < size/3) {
@@ -72,8 +72,8 @@ public:
 					exch(j, j-h);
 				}
 			}
+			h /= 3;
 		}
-		h /= 3;
 	}
 };
 

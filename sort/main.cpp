@@ -46,6 +46,18 @@ TEST(TEST_INSERT_SORT, ONLY_TEST)
 	delete []array;
 }
 
+TEST(TEST_BUBBLE_SORT, ONLY_TEST)
+{
+	int *array = new int[TEST_COUNTS];
+	srand(time(NULL));
+	for (int i = 0; i < TEST_COUNTS; ++i) {
+		array[i] = rand() % 10000;
+	}
+	Sort<int>::BubbleSort(array, array+TEST_COUNTS);
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+	delete []array;
+}
+
 TEST(TEST_SHELL_SORT, ONLY_TEST)
 {
 	int *array = new int[TEST_COUNTS];

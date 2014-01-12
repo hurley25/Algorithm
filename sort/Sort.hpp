@@ -36,6 +36,7 @@ public:
 		return true;
 	}
 
+	// 选择排序
 	static void SelectSort(T *begin, T *end)
 	{
 		for (T *i = begin; i != end; ++i) {
@@ -49,6 +50,22 @@ public:
 		}
 	}
 
+	// 冒泡排序
+	static void BubbleSort(T *begin, T *end)
+	{
+		while (end > begin) {
+			T *last = begin;
+			for (T *i = begin; i != end; ++i) {
+				if (*i > *(i+1)) {
+					exch(i, i+1);
+					last = i;
+				}
+			}
+			end = last;
+		}
+	}
+	
+	// 插入排序
 	static void InsertSort(T *begin, T *end)
 	{
 		for (T *i = begin+1; i != end; ++i) {
@@ -58,6 +75,7 @@ public:
 		}
 	}
 
+	// 希尔排序
 	static void ShellSort(T *begin, T *end)
 	{
 		int size = end - begin;

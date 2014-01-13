@@ -53,15 +53,16 @@ public:
 	// 冒泡排序
 	static void BubbleSort(T *begin, T *end)
 	{
-		while (end > begin) {
+		T *fin = end - 1;
+		while (fin > begin) {
 			T *last = begin;
-			for (T *i = begin; i != end; ++i) {
+			for (T *i = begin; i != fin; ++i) {
 				if (*i > *(i+1)) {
 					exch(i, i+1);
 					last = i;
 				}
 			}
-			end = last;
+			fin = last;
 		}
 	}
 	

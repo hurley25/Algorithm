@@ -19,7 +19,7 @@
 
 #include "Sort.hpp"
 
-#define TEST_COUNTS 10
+#define TEST_COUNTS 10000
 
 TEST(TEST_SELECT_SORT, ONLY_TEST)
 {
@@ -27,21 +27,8 @@ TEST(TEST_SELECT_SORT, ONLY_TEST)
 	for (int i = 0; i < TEST_COUNTS; ++i) {
 		array[i] = TEST_COUNTS - i;
 	}
-
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	Sort<int>::SelectSort(array, array+TEST_COUNTS);
 	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
-
-	std::cout << "Select Sort: ";
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	delete []array;
 }
 
@@ -51,21 +38,19 @@ TEST(TEST_INSERT_SORT, ONLY_TEST)
 	for (int i = 0; i < TEST_COUNTS; ++i) {
 		array[i] = TEST_COUNTS - i;
 	}
-
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	Sort<int>::InsertSort(array, array+TEST_COUNTS);
 	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+	delete []array;
+}
 
-	std::cout << "Insert Sort: ";
+TEST(TEST_INSERT_SORT_SECOND, ONLY_TEST)
+{
+	int *array = new int[TEST_COUNTS];
 	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
+		array[i] = TEST_COUNTS - i;
 	}
-	std::cout << std::endl;
-
+	Sort<int>::InsertSortSecond(array, array+TEST_COUNTS);
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
 	delete []array;
 }
 
@@ -75,21 +60,8 @@ TEST(TEST_BUBBLE_SORT, ONLY_TEST)
 	for (int i = 0; i < TEST_COUNTS; ++i) {
 		array[i] = TEST_COUNTS - i;
 	}
-
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-	
 	Sort<int>::BubbleSort(array, array+TEST_COUNTS);
 	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
-
-	std::cout << "Bubble Sort: ";
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	delete []array;
 }
 
@@ -99,20 +71,8 @@ TEST(TEST_SHELL_SORT, ONLY_TEST)
 	for (int i = 0; i < TEST_COUNTS; ++i) {
 		array[i] = TEST_COUNTS - i;
 	}
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	Sort<int>::ShellSort(array, array+TEST_COUNTS);
 	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
-
-	std::cout << "Shell Sort: ";
-	for (int i = 0; i < TEST_COUNTS; ++i) {
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
-
 	delete []array;
 }
 

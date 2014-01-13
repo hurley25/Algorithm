@@ -84,6 +84,24 @@ public:
 		}
 	}
 
+	// 插入排序改进
+	static void InsertSortSecond(T *begin, T *end)
+	{
+		T *min = begin;
+		for (T *i = begin+1; i != end; ++i) {
+			if (*i < *min) {
+				min = i;
+			}
+		}
+		exch(begin, min);
+
+		for (T *i = begin+2; i != end; ++i) {
+			for (T *j = i; *j < *(j-1); --j) {
+				exch(j, j-1);
+			}
+		}
+	}
+
 	// 希尔排序
 	static void ShellSort(T *begin, T *end)
 	{

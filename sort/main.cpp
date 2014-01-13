@@ -54,6 +54,17 @@ TEST(TEST_INSERT_SORT_SECOND, ONLY_TEST)
 	delete []array;
 }
 
+TEST(TEST_INSERT_SORT_THRID, ONLY_TEST)
+{
+	int *array = new int[TEST_COUNTS];
+	for (int i = 0; i < TEST_COUNTS; ++i) {
+		array[i] = TEST_COUNTS - i;
+	}
+	Sort<int>::InsertSortThrid(array, array+TEST_COUNTS);
+	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+	delete []array;
+}
+
 TEST(TEST_BUBBLE_SORT, ONLY_TEST)
 {
 	int *array = new int[TEST_COUNTS];

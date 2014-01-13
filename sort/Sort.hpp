@@ -102,6 +102,25 @@ public:
 		}
 	}
 
+	// 插入排序再改进
+	static void InsertSortThrid(T *begin, T *end)
+	{
+		T *min = begin;
+		for (T *i = begin+1; i != end; ++i) {
+			if (*i < *min) {
+				min = i;
+			}
+		}
+		exch(begin, min);
+
+		for (T *i = begin+2; i != end; ++i) {
+			T tmp = *i;
+			for (T *j = i-1; tmp < *j; --j) {
+				*(j+1) = *j;
+			}
+		}
+	}
+
 	// 希尔排序
 	static void ShellSort(T *begin, T *end)
 	{

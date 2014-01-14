@@ -17,14 +17,6 @@
 template <typename T>
 class Sort
 {
-private:
-	static void exch(T *elem1, T *elem2)
-	{
-		T tmp;
-		tmp = *elem1;
-		*elem1 = *elem2;
-		*elem2 = tmp;
-	}
 public:
 	static bool isSorted(T *begin, T *end)
 	{
@@ -115,9 +107,11 @@ public:
 
 		for (T *i = begin+2; i != end; ++i) {
 			T tmp = *i;
-			for (T *j = i-1; tmp < *j; --j) {
+			T *j = i - 1;
+			for ( ;tmp < *j; --j) {
 				*(j+1) = *j;
 			}
+			*(j+1) = tmp;
 		}
 	}
 
@@ -138,6 +132,15 @@ public:
 			}
 			h /= 3;
 		}
+	}
+
+private:
+	static void exch(T *elem1, T *elem2)
+	{
+		T tmp;
+		tmp = *elem1;
+		*elem1 = *elem2;
+		*elem2 = tmp;
 	}
 };
 

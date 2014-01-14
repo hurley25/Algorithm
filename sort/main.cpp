@@ -87,6 +87,27 @@ TEST(TEST_SHELL_SORT, ONLY_TEST)
 	delete []array;
 }
 
+//TEST(TEST_QUICK_SORT, ONLY_TEST)
+//{
+//	#undef TEST_COUNTS
+//	#define TEST_COUNTS 10
+//	int *array = new int[TEST_COUNTS];
+//	for (int i = 0; i < TEST_COUNTS; ++i) {
+//		array[i] = TEST_COUNTS - i;
+//	}
+//	for (int i = 0; i < TEST_COUNTS; ++i) {
+//		std::cout << array[i] << " ";
+//	}
+//	std::cout << std::endl;
+//	Sort<int>::QuickSort(array, array+TEST_COUNTS);
+//	for (int i = 0; i < TEST_COUNTS; ++i) {
+//		std::cout << array[i] << " ";
+//	}
+//	std::cout << std::endl;
+//	EXPECT_TRUE(Sort<int>::isSorted(array, array+TEST_COUNTS));
+//	delete []array;
+//}
+
 int main(int argc, char *argv[])
 {
 	testing::InitGoogleTest(&argc, argv);

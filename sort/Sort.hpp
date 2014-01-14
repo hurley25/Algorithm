@@ -107,7 +107,7 @@ public:
 
 		for (T *i = begin+2; i != end; ++i) {
 			T tmp = *i;
-			T *j = i - 1;
+			T *j = i-1;
 			for ( ;tmp < *j; --j) {
 				*(j+1) = *j;
 			}
@@ -133,7 +133,6 @@ public:
 			h /= 3;
 		}
 	}
-
 private:
 	static void exch(T *elem1, T *elem2)
 	{
